@@ -8,6 +8,6 @@ Given that I want to watch Boss Baby
 and I am not at home
 and I did not bring Boss Baby with me
 and I have Boss Baby on a remote server at home
-then I can stream it from home
+then I can stream it from this application
 
 --------------------------------------------------------------------
