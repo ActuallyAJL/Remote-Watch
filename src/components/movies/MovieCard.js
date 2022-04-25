@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getMoviePoster } from "../modules/MovieManager";
+import './MovieList.css'
 
-export const MovieCard = ({movie}) => {
+export const MovieCard = ({ movie }) => {
 
-    console.log(movie);
+  const [poster, setPoster] = useState([]);
 
-    return (
-        <>
-            <div className="movie-card">
-                <img src={`${movie.attributes.thumb}`}></img>
-            </div>
-        </>
-    );
+  const getPoster = () => {
+    getMoviePoster(movie.attributes.thumb).then((thisPoster) => {
+      setPoster(thisPoster);
+    });
+  };
+
+  useEffect(() => {
+    getPoster();
+  }, []);
+
+  return (
+    <>
+      <div className="movie_card">
+        {<img src={poster.url}></img>}
+      </div>
+    </>
+  );
 };
