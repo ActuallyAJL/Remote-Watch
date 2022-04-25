@@ -25,3 +25,5 @@ yarn-error.log*
 *.mp4
 
 database.json
+
+settings.js
