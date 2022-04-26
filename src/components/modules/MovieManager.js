@@ -18,6 +18,15 @@ export const getAllMovies = () => {
     });
 };
 
+export const getMovieById = (movieId) => {
+  return fetch(`${url}/library/metadata/${movieId}?X-Plex-Token=${key}`)
+    .then((res) => res.text())
+    .then((res) => {
+      const xml = new XMLParser().parseFromString(res);
+      return xml;
+    });
+};
+
 export const getMoviePoster = (imgRoute) => {
-  return fetch(`${url}${imgRoute}?X-Plex-Token=${key}`)
+  return fetch(`${url}${imgRoute}?X-Plex-Token=${key}`);
 };
