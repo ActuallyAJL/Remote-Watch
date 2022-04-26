@@ -14,11 +14,24 @@ export const UseVideoPlayer = (videoElement) => {
     });
   };
 
+  const toggleMute = () => {
+    setPlayerState({
+      ...playerState,
+      isMuted: !playerState.isMuted,
+    });
+  };
+
   useEffect(() => {
     playerState.isPlaying
       ? videoElement.current.play()
       : videoElement.current.pause();
-  }, [playerState.isPlaying, videoElement]);
+    }, [playerState.isPlaying, videoElement]);
+    
+    useEffect(() => {
+      playerState.isMuted
+        ? (videoElement.current.muted = true)
+        : (videoElement.current.muted = false);
+    }, [playerState.isMuted, videoElement]);
 
   const handleOnTimeUpdate = () => {
     const progress =
@@ -38,19 +51,6 @@ export const UseVideoPlayer = (videoElement) => {
       progress: manualChange,
     });
   };
-
-  const toggleMute = () => {
-    setPlayerState({
-      ...playerState,
-      isMuted: !playerState.isMuted,
-    });
-  };
-
-  useEffect(() => {
-    playerState.isMuted
-      ? (videoElement.current.muted = true)
-      : (videoElement.current.muted = false);
-  }, [playerState.isMuted, videoElement]);
 
   return {
     playerState,

@@ -1,9 +1,15 @@
 import React , { useRef } from 'react';
+import { useParams , useLocation } from 'react-router-dom';
 import './Player.css';
 import { UseVideoPlayer } from './UseVideoPlayer';
-import video from '../assets/video.mp4';
 
 export const Player = () => {
+
+  const {movieId} = useParams();
+
+  const location = useLocation();
+
+  const fullPath = `http://75.46.245.204:10913${location.state.videoURL}?X-Plex-Token=1rYWat5i52WxjT9aZ82s`;
 
   const videoElement = useRef(null);
   const {
@@ -18,7 +24,7 @@ export const Player = () => {
     <div className='container'>
       <div className='video-wrapper'>
         <video
-          src={video}
+          src={fullPath}
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />

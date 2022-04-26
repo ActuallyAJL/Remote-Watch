@@ -27,6 +27,10 @@ export const getMovieById = (movieId) => {
     });
 };
 
+export const getVideoFile = (videoURL) => {
+  return fetch(`${url}${videoURL}?X-Plex-Token=${key}`);
+}
+
 export const getMoviePoster = (imgRoute) => {
   return fetch(`${url}${imgRoute}?X-Plex-Token=${key}`);
 };
