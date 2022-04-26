@@ -1,13 +1,24 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Administrator",
-        "email": "admin@rm.com",
-        "isAdmin": true
-      }
-    ],
-    "favorites": [],
-    "reviews": []
-  }
-  
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "email": "admin@rm.com",
+      "isAdmin": true
+    },
+    {
+      "email": "al@al.com",
+      "name": "Alex Levy",
+      "id": 2,
+      "isAdmin": false
+    },
+    {
+      "email": "bb@bb.com",
+      "name": "Bory Blark",
+      "idAdmin": false,
+      "id": 3
+    }
+  ],
+  "favorites": [],
+  "reviews": []
+}

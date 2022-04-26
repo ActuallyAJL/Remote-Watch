@@ -1,11 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export const Login = ({ setAuthUser }) => {
   const [loginUser, setLoginUser] = useState({ email: "" });
   const [existDialog, setExistDialog] = useState(false);
-
 
   const navigate = useNavigate();
 
@@ -16,7 +15,6 @@ export const Login = ({ setAuthUser }) => {
   };
 
   const existingUserCheck = () => {
-    // If your json-server URL is different, please change it below!
     return fetch(`http://localhost:8088/users?email=${loginUser.email}`)
       .then((res) => res.json())
       .then((user) => (user.length ? user[0] : false));
@@ -27,8 +25,8 @@ export const Login = ({ setAuthUser }) => {
 
     existingUserCheck().then((exists) => {
       if (exists) {
-        sessionStorage.setItem("rm_user", exists.id);
-        navigate("/dashboard");
+        setAuthUser(exists.id);
+        navigate("/");
       } else {
         setExistDialog(true);
       }
@@ -48,7 +46,7 @@ export const Login = ({ setAuthUser }) => {
       </dialog>
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Nutshell</h1>
+          <h1>Remote Watch</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <label htmlFor="inputEmail"> Email address </label>
