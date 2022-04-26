@@ -12,3 +12,13 @@
 .movie_card img {
     max-width: 100%;
 }
+
+.movie_detail_card {
+    max-width: 50%;
+    background-color: grey;
+    display: flex;
+}
+
+.movie_detail_poster img{
+    max-width: 50%;
+}

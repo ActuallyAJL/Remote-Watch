@@ -20,7 +20,7 @@ export const MovieList = () => {
   return (
     <div className='movie_list'>
       {movies.map((movie) => {
-        return <MovieCard key={movie.attributes.key} movie={movie} />;
+        return <MovieCard key={movie.attributes?.ratingKey} movie={movie} />;
       })}
     </div>
   );

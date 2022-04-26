@@ -28,7 +28,7 @@ export const Login = ({ setAuthUser }) => {
     existingUserCheck().then((exists) => {
       if (exists) {
         sessionStorage.setItem("rm_user", exists.id);
-        navigate("/");
+        navigate("/dashboard");
       } else {
         setExistDialog(true);
       }
