@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export const UseVideoPlayer = (videoElement) => {
   const [playerState, setPlayerState] = useState({
-    isPlaying: false,
+    isPlaying: true,
     progress: 0,
     isMuted: false,
   });
