@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { getMovieById } from "../modules/MovieManager";
+import { ReviewList } from "../reviews/ReviewList";
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
@@ -17,14 +18,17 @@ export const MovieDetails = () => {
 
   const handleClick = () => {
     navigate(`/${movieId}/play`);
-  }
+  };
 
   return (
     <div className="movie_detail_card">
       <div className="movie_detail_poster">
+        <div className="movie_detail_header">
         {<img src={location.state.posterUrl} onClick={() => handleClick()} />}
       </div>
       <h1>{movie.attributes?.title}</h1>
+      </div>
+      <ReviewList movieId={movieId} />
     </div>
   );
 };

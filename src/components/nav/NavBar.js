@@ -7,7 +7,7 @@ export const NavBar = (props) => {
 
       <ul className="nav nav-pills nav-fill">
         <li className="nav-item">
-          <Link className="nav-link" to="/">Remote Watch</Link>
+          <Link className="nav-link" to="/">All</Link>
         </li>
       </ul>
     </nav>
