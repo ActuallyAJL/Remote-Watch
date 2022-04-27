@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Player.css";
 import { UseVideoPlayer } from "./UseVideoPlayer";
-import { getMovieById, url, key } from "../modules/MovieManager";
+import { getMovieById } from "../modules/MovieManager";
+import { url , key } from "../Settings";
 
 export const Player = () => {
   const { movieId } = useParams();
@@ -10,6 +11,7 @@ export const Player = () => {
 
   useEffect(() => {
     getMovieById(movieId).then((thisMovie) => {
+      console.log(thisMovie);
       setVideoURL(thisMovie.children[0].children[0].children[0].attributes.key);
     });
   }, []);
