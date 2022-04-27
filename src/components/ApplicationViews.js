@@ -17,7 +17,7 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
         <Route path="/" element={<PrivateOutlet />}>
           <Route path="/" element={<MovieList />}></Route>
           <Route path="/:movieId/details" element={<MovieDetails />}></Route>
-          <Route path='/play' element={<Player/>}></Route>
+          <Route path='/:movieId/play' element={<Player/>}></Route>
         </Route>
         
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />

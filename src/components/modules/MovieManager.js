@@ -5,8 +5,8 @@ import { localKey, remoteKey } from "../Settings";
 const dbURL = "http://localhost:8088";
 const localPlex = "http://localhost:32400";
 const remotePlex = "http://75.46.245.204:10913";
-const url = remotePlex;
-const key = remoteKey;
+export const url = remotePlex;
+export const key = remoteKey;
 const movieLibId = 1;
 
 export const getAllMovies = () => {
@@ -26,10 +26,6 @@ export const getMovieById = (movieId) => {
       return xml;
     });
 };
-
-export const getVideoFile = (videoURL) => {
-  return fetch(`${url}${videoURL}?X-Plex-Token=${key}`);
-}
 
 export const getMoviePoster = (imgRoute) => {
   return fetch(`${url}${imgRoute}?X-Plex-Token=${key}`);
