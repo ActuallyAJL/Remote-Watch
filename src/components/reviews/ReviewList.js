@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ReviewCard } from "./ReviewCard";
-import { getReviewsByMovieId , addReview } from "../modules/ReviewManager";
+import { getReviewsByMovieId, addReview } from "../modules/ReviewManager";
 
-export const ReviewList = ({ movieId }) => {
+export const ReviewList = ({ movieId, getLoggedInUser }) => {
   const [reviews, setReviews] = useState([]);
   const [isWritingReview, setIsWritingReview] = useState(false);
+  const [newReview, setNewReview] = useState({
+    title: "",
+    body: "",
+    rating: 0,
+    movieId: parseInt(movieId),
+  });
 
   const getReviews = (movieId) => {
     getReviewsByMovieId(movieId).then((someReviews) => setReviews(someReviews));
@@ -12,99 +18,107 @@ export const ReviewList = ({ movieId }) => {
 
   const handleSubmitReview = (event) => {
     event.preventDefault();
-    addReview()
+    addReview(newReview).then(() => setIsWritingReview(false));
   };
 
-  const handleFieldChange = () => {};
+  const handleFieldChange = (event) => {
+    const tempReview = { ...newReview };
 
+    tempReview.userId = getLoggedInUser();
+
+    let selectedTarget = event.target.value;
+
+    if (event.target.id.includes("rating")) {
+      selectedTarget = parseInt(selectedTarget);
+    }
+    tempReview[event.target.id] = selectedTarget;
+    setNewReview(tempReview);
+  };
 
   useEffect(() => {
     getReviews(movieId);
-    console.log(reviews);
-  }, []);
+  }, [isWritingReview]);
+
+  const newReviewCodeArray = [
+    <form className="new_review_form">
+      <h2>Add Review</h2>
+      <fieldset>
+        <label className="new_review_label" htmlFor="new_review_title">
+          Title
+        </label>
+        <input
+          type="text"
+          id="title"
+          onChange={handleFieldChange}
+          required
+          autoFocus
+          className="new_review_controlled_form"
+          placeholder="Title"
+          value={newReview.title}
+        />
+      </fieldset>
+      <fieldset>
+        <label className="new_review_label" htmlFor="new_review_body">
+          Body
+        </label>
+        <input
+          type="text"
+          id="body"
+          onChange={handleFieldChange}
+          required
+          autoFocus
+          className="new_review_controlled_form"
+          placeholder="Body"
+          value={newReview.body}
+        />
+      </fieldset>
+      <fieldset>
+        <label className="new_review_label" htmlFor="new_review_rating">
+          Rating
+        </label>
+        <input
+          type="text"
+          id="rating"
+          onChange={handleFieldChange}
+          required
+          autoFocus
+          className="new_review_controlled_form"
+          placeholder="Rating"
+          value={newReview.rating}
+        />
+      </fieldset>
+      <button
+        type="button"
+        id="message_edit_submit_btn"
+        className="submit_btn"
+        onClick={handleSubmitReview}
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        id="new_review_cancel_btn"
+        className="cancel_btn"
+        onClick={() => setIsWritingReview(false)}
+      >
+        Cancel
+      </button>
+    </form>,
+    <button
+      type="button"
+      onClick={() => {
+        setIsWritingReview(true);
+      }}
+    >
+      Add a New Review
+    </button>
+  ];
 
   return (
     <>
       <div className="review_list">
-        <button
-          type="button"
-          onClick={() => {
-            () => {
-              setIsWritingReview(true);
-            };
-          }}
-        >
-          Add a New Review
-        </button>
         <h1>User Reviews</h1>
-        {isWritingReview ? (
-          <form className="new_review_form">
-            <h2>Add Review</h2>
-            <fieldset>
-              <label className="new_review_label" htmlFor="new_review_title">
-                Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                onChange={handleFieldChange}
-                required
-                autoFocus
-                className="new_review_controlled_form"
-                placeholder="Title"
-                value={newReview.title}
-              />
-            </fieldset>
-            <fieldset>
-              <label className="new_review_label" htmlFor="new_review_body">
-                Body
-              </label>
-              <input
-                type="text"
-                id="body"
-                onChange={handleFieldChange}
-                required
-                autoFocus
-                className="new_review_controlled_form"
-                placeholder="Body"
-                value={newReview.body}
-              />
-            </fieldset>
-            <fieldset>
-              <label className="new_review_label" htmlFor="new_review_rating">
-                Rating
-              </label>
-              <input
-                type="text"
-                id="rating"
-                onChange={handleFieldChange}
-                required
-                autoFocus
-                className="new_review_controlled_form"
-                placeholder="Rating"
-                value={newReview.rating}
-              />
-            </fieldset>
-            <button
-              type="button"
-              id="message_edit_submit_btn"
-              className="submit_btn"
-              onClick={handleSubmitReview}
-            >
-              Submit
-            </button>
-            <button
-              type="button"
-              id="new_review_cancel_btn"
-              className="cancel_btn"
-              onClick={() => setIsWritingReview(false)}
-            >
-              Cancel
-            </button>
-          </form>
-        ) : (
-          <></>
-        )}
+        {isWritingReview ? newReviewCodeArray[0] : newReviewCodeArray[1]}
         {reviews.map((review) => {
           return <ReviewCard key={review.id} review={review} />;
         })}
