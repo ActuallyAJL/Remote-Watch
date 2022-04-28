@@ -4,6 +4,7 @@ export const UseVideoPlayer = (videoElement) => {
   const [playerState, setPlayerState] = useState({
     isPlaying: true,
     progress: 0,
+    volume: 1,
     isMuted: false,
   });
 
@@ -24,7 +25,7 @@ export const UseVideoPlayer = (videoElement) => {
   useEffect(() => {
     playerState.isPlaying
       ? videoElement.current.play()
-      : videoElement.current.pause();
+      : videoElement.current.pause(); console.log(videoElement)
     }, [playerState.isPlaying, videoElement]);
     
     useEffect(() => {
@@ -52,11 +53,22 @@ export const UseVideoPlayer = (videoElement) => {
     });
   };
 
+  const handleChangeVolume = (event) => {
+    const manualChange = Number(event.target.value);
+    videoElement.current.volume = manualChange;
+    console.log(videoElement.current.volume)
+    setPlayerState({
+      ...playerState,
+      volume: manualChange
+    });
+  }
+
   return {
     playerState,
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
     toggleMute,
+    handleChangeVolume
   };
 };
