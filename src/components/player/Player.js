@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useParams , useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Player.css";
 import { UseVideoPlayer } from "./UseVideoPlayer";
 import { getMovieById } from "../modules/MovieManager";
@@ -13,7 +13,6 @@ export const Player = () => {
   useEffect(() => {
     getMovieById(movieId).then((thisMovie) => {
       setMovie(thisMovie.children[0]);
-      console.log(thisMovie)
       setVideoURL(thisMovie.children[0].children[0].children[0].attributes.key);
     });
   }, []);
@@ -25,6 +24,7 @@ export const Player = () => {
     handleOnTimeUpdate,
     handleVideoProgress,
     toggleMute,
+    handleChangeVolume,
   } = UseVideoPlayer(videoElement);
 
   const navigate = useNavigate();
@@ -38,7 +38,11 @@ export const Player = () => {
           onTimeUpdate={handleOnTimeUpdate}
         />
         <div className="player_header actions">
-          <button onClick={() => {navigate("/")}}>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <i className="bx bx-back">
               <img className="bx-icon back-icon" src="/images/backicon.png" />
             </i>
@@ -92,6 +96,17 @@ export const Player = () => {
               </i>
             )}
           </button>
+          <input
+            id="player-volume-bar"
+            type="range"
+            min="0"
+            max="1"
+            step=".001"
+            value={playerState.volume}
+            onChange={(e) => {
+              handleChangeVolume(e);
+            }}
+          />
         </div>
       </div>
     </div>
