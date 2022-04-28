@@ -3,7 +3,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { getMovieById } from "../modules/MovieManager";
 import { ReviewList } from "../reviews/ReviewList";
 
-export const MovieDetails = () => {
+export const MovieDetails = ({ getLoggedInUser }) => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
 
@@ -28,7 +28,7 @@ export const MovieDetails = () => {
       </div>
       <h1>{movie.attributes?.title}</h1>
       </div>
-      <ReviewList movieId={movieId} />
+      <ReviewList movieId={movieId} getLoggedInUser={getLoggedInUser}/>
     </div>
   );
 };

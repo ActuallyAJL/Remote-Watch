@@ -1,17 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import "./Player.css";
 import { UseVideoPlayer } from "./UseVideoPlayer";
 import { getMovieById } from "../modules/MovieManager";
-import { url , key } from "../Settings";
+import { url, key } from "../Settings";
 
 export const Player = () => {
   const { movieId } = useParams();
+  const [movie, setMovie] = useState({});
   const [videoURL, setVideoURL] = useState("");
 
   useEffect(() => {
     getMovieById(movieId).then((thisMovie) => {
-      console.log(thisMovie);
+      setMovie(thisMovie.children[0]);
+      console.log(thisMovie)
       setVideoURL(thisMovie.children[0].children[0].children[0].attributes.key);
     });
   }, []);
@@ -25,6 +27,8 @@ export const Player = () => {
     toggleMute,
   } = UseVideoPlayer(videoElement);
 
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <div className="video-wrapper">
@@ -33,6 +37,14 @@ export const Player = () => {
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />
+        <div className="player_header actions">
+          <button onClick={() => {navigate("/")}}>
+            <i className="bx bx-back">
+              <img className="bx-icon back-icon" src="/images/backicon.png" />
+            </i>
+          </button>
+          <h1>{`${movie.attributes?.title} (${movie.attributes?.year})`}</h1>
+        </div>
         <div className="controls">
           <div className="actions">
             <button onClick={togglePlay}>
@@ -40,14 +52,14 @@ export const Player = () => {
                 <i className="bx bx-play">
                   <img
                     className="bx-icon play-icon"
-                    src="./images/playicon.png"
+                    src="/images/playicon.png"
                   />
                 </i>
               ) : (
                 <i className="bx bx-pause">
                   <img
                     className="bx-icon pause-icon"
-                    src="./images/pauseicon.png"
+                    src="/images/pauseicon.png"
                   />
                 </i>
               )}
@@ -68,14 +80,14 @@ export const Player = () => {
               <i className="bx bxs-volume-full">
                 <img
                   className="bx-icon unmuted-icon"
-                  src="./images/unmutedicon.png"
+                  src="/images/unmutedicon.png"
                 />
               </i>
             ) : (
               <i className="bx bxs-volume-mute">
                 <img
                   className="bx-icon muted-icon"
-                  src="./images/mutedicon.png"
+                  src="/images/mutedicon.png"
                 />
               </i>
             )}
