@@ -22,13 +22,17 @@ export const MovieDetails = ({ getLoggedInUser }) => {
 
   return (
     <div className="movie_detail_card">
-      <div className="movie_detail_poster">
-        <div className="movie_detail_header">
-        {<img src={location.state.posterUrl} onClick={() => handleClick()} />}
+      <div className="movie_detail_header">
+        <div className="movie_detail_poster">
+          {<img src={location.state.posterUrl} onClick={() => handleClick()} />}
+        </div>
+        <div className="movie_detail_info">
+          <h1>{movie.attributes?.title}</h1>
+          <h2>({movie.attributes?.year})</h2>
+          <h4>{movie.attributes?.summary}</h4>
+        </div>
       </div>
-      <h1>{movie.attributes?.title}</h1>
-      </div>
-      <ReviewList movieId={movieId} getLoggedInUser={getLoggedInUser}/>
+      <ReviewList movieId={movieId} getLoggedInUser={getLoggedInUser} />
     </div>
   );
 };
