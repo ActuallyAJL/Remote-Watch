@@ -25,6 +25,7 @@ export const Player = () => {
     handleVideoProgress,
     toggleMute,
     handleChangeVolume,
+    openFullScreen,
   } = UseVideoPlayer(videoElement);
 
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export const Player = () => {
           </button>
           <h1>{`${movie.attributes?.title} (${movie.attributes?.year})`}</h1>
         </div>
-        <div className="controls">
+        <div className="progress_controls">
           <div className="actions">
             <button onClick={togglePlay}>
               {!playerState.isPlaying ? (
@@ -74,11 +75,24 @@ export const Player = () => {
             type="range"
             min="0"
             max="100"
+            step="1"
             value={playerState.progress}
             onChange={(e) => {
               handleVideoProgress(e);
             }}
           />
+          <div className="actions">
+            <button className="fs-btn" onClick={openFullScreen}>
+              <i className="bx bxs-maximize-video">
+                <img
+                  className="bx-icon maximize-icon"
+                  src="/images/maximizeicon.png"
+                />
+              </i>
+            </button>
+          </div>
+        </div>
+        <div className="volume_controls">
           <button className="mute-btn" onClick={toggleMute}>
             {!playerState.isMuted ? (
               <i className="bx bxs-volume-full">
@@ -101,7 +115,7 @@ export const Player = () => {
             type="range"
             min="0"
             max="1"
-            step=".001"
+            step=".01"
             value={playerState.volume}
             onChange={(e) => {
               handleChangeVolume(e);

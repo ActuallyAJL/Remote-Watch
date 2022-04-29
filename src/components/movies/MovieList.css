@@ -13,12 +13,21 @@
     max-width: 100%;
 }
 
-.movie_detail_card {
-    max-width: 50%;
-    background-color: grey;
+.movie_detail_header {
     display: flex;
 }
 
+.movie_detail_info {
+    width: 50%;
+}
+
+.movie_detail_card {
+    max-width: 66vh;
+    margin: auto;
+    min-height: 100vh;
+    background-color: grey;
+}
+
 .movie_detail_poster img{
-    max-width: 50%;
+    max-height: 50vh;
 }
