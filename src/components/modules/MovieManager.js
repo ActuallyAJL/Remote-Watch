@@ -15,7 +15,6 @@ export const getMovieById = (movieId) => {
     .then((res) => res.text())
     .then((res) => {
       const xml = new XMLParser().parseFromString(res);
-      console.log(xml)
       return xml;
     });
 };

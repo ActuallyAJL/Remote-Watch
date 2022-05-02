@@ -19,7 +19,7 @@ export const ApplicationViews = ({
     <>
       <Routes>
         <Route path="/" element={<PrivateOutlet />}>
-          <Route path="/" element={<MovieList />}></Route>
+          <Route path="/" element={<MovieList getLoggedInUser={getLoggedInUser}/>}></Route>
           <Route
             path="/:movieId/details"
             element={<MovieDetails getLoggedInUser={getLoggedInUser} />}
