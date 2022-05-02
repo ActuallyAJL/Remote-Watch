@@ -58,6 +58,12 @@ export const MovieDetails = ({ getLoggedInUser }) => {
     setFavId(0);
   };
 
+  const asciiParser = (text) => {
+    let ascii = "&#39;";
+    let newText = text?.replaceAll(ascii, "'");
+    return newText;
+  };
+
   return (
     <div className="movie_detail_card">
       <div className="movie_detail_header">
@@ -67,7 +73,7 @@ export const MovieDetails = ({ getLoggedInUser }) => {
         <div className="movie_detail_info">
           <h1>{movie.attributes?.title}</h1>
           <h2>({movie.attributes?.year})</h2>
-          <h4>{movie.attributes?.summary}</h4>
+          <h4>{asciiParser(movie.attributes?.summary)}</h4>
           <div className="actions">
             {isFavorite ? (
               <button

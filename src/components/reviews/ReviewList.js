@@ -12,6 +12,8 @@ export const ReviewList = ({ movieId, getLoggedInUser }) => {
     movieId: parseInt(movieId),
   });
 
+  const currentUser = getLoggedInUser();
+
   const getReviews = (movieId) => {
     getReviewsByMovieId(movieId).then((someReviews) => setReviews(someReviews));
   };
@@ -24,7 +26,7 @@ export const ReviewList = ({ movieId, getLoggedInUser }) => {
   const handleFieldChange = (event) => {
     const tempReview = { ...newReview };
 
-    tempReview.userId = getLoggedInUser();
+    tempReview.userId = currentUser;
 
     let selectedTarget = event.target.value;
 
@@ -120,7 +122,7 @@ export const ReviewList = ({ movieId, getLoggedInUser }) => {
         <h1>User Reviews</h1>
         {isWritingReview ? newReviewCodeArray[0] : newReviewCodeArray[1]}
         {reviews.map((review) => {
-          return <ReviewCard key={review.id} review={review} />;
+          return <ReviewCard key={review.id} review={review} getLoggedInUser={getLoggedInUser}/>;
         })}
       </div>
     </>
