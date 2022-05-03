@@ -4,6 +4,7 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { MovieList } from "./movies/MovieList";
 import { MovieDetails } from "./movies/MovieDetails";
+import { GenreMovieList } from "./genres/GenreMovieList";
 import { Player } from "./player/Player";
 
 export const ApplicationViews = ({
@@ -19,12 +20,19 @@ export const ApplicationViews = ({
     <>
       <Routes>
         <Route path="/" element={<PrivateOutlet />}>
-          <Route path="/" element={<MovieList getLoggedInUser={getLoggedInUser}/>}></Route>
+          <Route
+            path="/"
+            element={<MovieList getLoggedInUser={getLoggedInUser} />}
+          ></Route>
           <Route
             path="/:movieId/details"
             element={<MovieDetails getLoggedInUser={getLoggedInUser} />}
           ></Route>
           <Route path="/:movieId/play" element={<Player />}></Route>
+          <Route
+            path="/genre/:genreId"
+            element={<GenreMovieList getLoggedInUser={getLoggedInUser} />}
+          ></Route>
         </Route>
 
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
