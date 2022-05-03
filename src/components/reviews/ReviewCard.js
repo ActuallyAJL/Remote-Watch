@@ -75,11 +75,13 @@ export const ReviewCard = ({ review, getLoggedInUser }) => {
           Rating
         </label>
         <input
-          type="text"
+          type="number"
           id="rating"
           onChange={handleFieldChange}
           required
           autoFocus
+          min='1'
+          max='5'
           className="edit_review_controlled_form"
           placeholder="Rating"
           value={thisReview.rating}

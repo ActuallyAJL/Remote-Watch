@@ -1,38 +1,28 @@
-.logo {
-    height: 100px;
-}
-.logo2 {
-    height: 100px;
-    margin: 0;
+nav {
+  background-color: rgba(43, 54, 72, 0.8);
+  z-index: 50;
 }
 
-nav {
-    background-color: rgba(43, 54, 72, .8);
-    z-index: 50;
-}
 .nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: green;
-    border-color: green;
-    text-decoration: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: green;
+  border-color: green;
+  text-decoration: none;
 }
-.nav-link:hover {
-    color: green;
-}
-.nav-link::after {
-    color: green;
-}
-a {
-    color: green;
-}
+
 .nav-item {
-    color: green;
-    margin: 5px;
+  margin: 5px;
+  border-radius: 10px;
 }
-.nav-pills{
-    color: green;
-    display: flex;
+
+.nav-item button {
+    position: absolute;
+    right: 10px;
+}
+
+.nav-pills {
+  display: flex;
+  list-style-type: none;
 }

@@ -2,12 +2,14 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .movie_card {
     max-width: 10%;
-    margin: 30px;
-    background-color: grey;
+    min-width: 100px;
+    margin: 15px;
+    background-color: rgba(43, 54, 72, 0.8);
     border-radius: 10px;
 }
 
