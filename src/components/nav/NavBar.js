@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { GenreList } from "../genres/GenreList";
 import "./NavBar.css";
 
 export const NavBar = ({ clearUser }) => {
@@ -11,6 +12,7 @@ export const NavBar = ({ clearUser }) => {
             All
           </Link>
         </li>
+        <GenreList />
         <li className="nav-item">
           <button type="button" className="nav-link" onClick={clearUser}>
             Logout
