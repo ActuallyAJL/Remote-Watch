@@ -1,3 +1,38 @@
+.logo {
+    height: 100px;
+}
+.logo2 {
+    height: 100px;
+    margin: 0;
+}
+
+nav {
+    background-color: rgba(43, 54, 72, .8);
+    z-index: 50;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: green;
+    border-color: green;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.nav-link:hover {
+    color: green;
+}
+.nav-link::after {
+    color: green;
+}
+a {
+    color: green;
+}
 .nav-item {
-    background-color: gray;
+    color: green;
+    margin: 5px;
+}
+.nav-pills{
+    color: green;
+    display: flex;
 }
