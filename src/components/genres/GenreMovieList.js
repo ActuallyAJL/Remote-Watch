@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export const GenreMovieList = ({ getLoggedInUser }) => {
   const [genreMovies, setGenreMovies] = useState([]);
-  const genreId = useParams();
+  const { genreId } = useParams();
 
   const getGenreMovies = () => {
     getMoviesByGenreId(genreId).then((theMovies) => {
@@ -16,7 +16,7 @@ export const GenreMovieList = ({ getLoggedInUser }) => {
 
   useEffect(() => {
     getGenreMovies();
-  }, []);
+  }, [genreId]);
 
   return (
     <div className="movie_list">
