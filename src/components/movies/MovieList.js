@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
 import { getAllMovies } from "../modules/MovieManager";
 import './MovieList.css'
-import { getFavoritesByMovieId } from "../modules/FavoriteManager";
 
 export const MovieList = ({ getLoggedInUser }) => {
   const [movies, setMovies] = useState([]);
