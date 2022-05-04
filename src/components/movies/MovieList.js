@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
 import { getAllMovies } from "../modules/MovieManager";
+import { NavBar } from "../nav/NavBar";
 import "./MovieList.css";
 
-export const MovieList = ({ getLoggedInUser }) => {
+export const MovieList = ({ getLoggedInUser , clearUser }) => {
   const [movies, setMovies] = useState([]);
 
   const getMovies = () => {
@@ -17,16 +18,19 @@ export const MovieList = ({ getLoggedInUser }) => {
   }, []);
 
   return (
-    <div className="movie_list">
-      {movies.map((movie) => {
-        return (
-          <MovieCard
-            key={movie.attributes?.ratingKey}
-            movie={movie}
-            getLoggedInUser={getLoggedInUser}
-          />
-        );
-      })}
-    </div>
+    <>
+      <NavBar clearUser={clearUser} />
+      <div className="movie_list">
+        {movies.map((movie) => {
+          return (
+            <MovieCard
+              key={movie.attributes?.ratingKey}
+              movie={movie}
+              getLoggedInUser={getLoggedInUser}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
