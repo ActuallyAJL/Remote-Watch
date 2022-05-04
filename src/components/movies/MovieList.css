@@ -1,9 +1,9 @@
 .movie_list {
     display: flex;
-    width: 100%;
+    width: 90%;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-top: 8vh;
+    padding-left: 170px;
 }
 
 .movie_card {
