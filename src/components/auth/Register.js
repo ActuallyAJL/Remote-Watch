@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "./Login.css";
 
-export const Register = ({setAuthUser}) => {
+export const Register = ({ setAuthUser }) => {
   const [registerUser, setRegisterUser] = useState({
     firstName: "",
     lastName: "",
@@ -55,7 +54,7 @@ export const Register = ({setAuthUser}) => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
+    <main className="container container--register">
       <dialog className="dialog dialog--password" open={conflictDialog}>
         <div>Account with that email address already exists</div>
         <button
@@ -67,11 +66,11 @@ export const Register = ({setAuthUser}) => {
       </dialog>
 
       <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">
+        <h1>Remote Watch</h1>
+        <h2 className="h3 mb-3 font-weight-normal">
           Please Register for Application Name
-        </h1>
+        </h2>
         <fieldset>
-          <label htmlFor="firstName"> First Name </label>
           <input
             type="text"
             name="firstName"
@@ -85,7 +84,6 @@ export const Register = ({setAuthUser}) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
           <input
             type="text"
             name="lastName"
@@ -98,7 +96,6 @@ export const Register = ({setAuthUser}) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="inputEmail"> Email address </label>
           <input
             type="email"
             name="email"

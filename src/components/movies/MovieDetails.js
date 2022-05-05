@@ -8,9 +8,10 @@ import {
   removeFavorite,
 } from "../modules/FavoriteManager";
 import { ReviewList } from "../reviews/ReviewList";
+import "../nav/NavBar.css";
 import "./MovieList.css";
 
-export const MovieDetails = ({ getLoggedInUser , clearUser }) => {
+export const MovieDetails = ({ getLoggedInUser, clearUser }) => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -66,7 +67,7 @@ export const MovieDetails = ({ getLoggedInUser , clearUser }) => {
   };
 
   return (
-    <>
+    <div className="site">
       <NavBar clearUser={clearUser} />
       <div className="movie_detail_card">
         <div className="movie_detail_header">
@@ -119,6 +120,6 @@ export const MovieDetails = ({ getLoggedInUser , clearUser }) => {
         </div>
         <ReviewList movieId={movieId} getLoggedInUser={getLoggedInUser} />
       </div>
-    </>
+    </div>
   );
 };

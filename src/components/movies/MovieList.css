@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 .movie_list {
     display: flex;
     width: 90%;
