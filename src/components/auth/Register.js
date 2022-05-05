@@ -54,63 +54,65 @@ export const Register = ({ setAuthUser }) => {
   };
 
   return (
-    <main className="container container--register">
-      <dialog className="dialog dialog--password" open={conflictDialog}>
-        <div>Account with that email address already exists</div>
-        <button
-          className="button--close"
-          onClick={(e) => setConflictDialog(false)}
-        >
-          Close
-        </button>
-      </dialog>
+    <main className="auth_body">
+      <main className="container container--auth container--register">
+        <dialog className="dialog dialog--password" open={conflictDialog}>
+          <div>Account with that email address already exists</div>
+          <button
+            className="button--close button_auth"
+            onClick={(e) => setConflictDialog(false)}
+          >
+            Close
+          </button>
+        </dialog>
 
-      <form className="form--login" onSubmit={handleRegister}>
-        <h1>Remote Watch</h1>
-        <h2 className="h3 mb-3 font-weight-normal">
-          Please Register for Application Name
-        </h2>
-        <fieldset>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            className="form-control"
-            placeholder="First name"
-            required
-            autoFocus
-            value={registerUser.firstName}
-            onChange={handleInputChange}
-          />
-        </fieldset>
-        <fieldset>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            className="form-control"
-            placeholder="Last name"
-            required
-            value={registerUser.lastName}
-            onChange={handleInputChange}
-          />
-        </fieldset>
-        <fieldset>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-            value={registerUser.email}
-            onChange={handleInputChange}
-          />
-        </fieldset>
-        <fieldset>
-          <button type="submit"> Sign in </button>
-        </fieldset>
-      </form>
+        <form className="form--login" onSubmit={handleRegister}>
+          <h1>Remote Watch</h1>
+          <h2 className="h3 mb-3 font-weight-normal">
+            Please Register for Application Name
+          </h2>
+          <fieldset className="fieldset_auth">
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              className="form-control input_auth"
+              placeholder="First name"
+              required
+              autoFocus
+              value={registerUser.firstName}
+              onChange={handleInputChange}
+            />
+          </fieldset>
+          <fieldset className="fieldset_auth">
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              className="form-control input_auth"
+              placeholder="Last name"
+              required
+              value={registerUser.lastName}
+              onChange={handleInputChange}
+            />
+          </fieldset>
+          <fieldset className="fieldset_auth">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="form-control input_auth"
+              placeholder="Email address"
+              required
+              value={registerUser.email}
+              onChange={handleInputChange}
+            />
+          </fieldset>
+          <fieldset className="fieldset_auth">
+            <button type="submit" className="button_auth"> Sign in </button>
+          </fieldset>
+        </form>
+      </main>
     </main>
   );
 };
