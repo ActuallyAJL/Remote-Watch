@@ -8,8 +8,8 @@ import {
   removeFavorite,
 } from "../modules/FavoriteManager";
 import { ReviewList } from "../reviews/ReviewList";
-import "../nav/NavBar.css";
 import "./MovieList.css";
+import "../nav/NavBar.css";
 
 export const MovieDetails = ({ getLoggedInUser, clearUser }) => {
   const [movie, setMovie] = useState({});

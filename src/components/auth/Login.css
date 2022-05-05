@@ -4,7 +4,7 @@
   border-radius: 10px;
 }
 
-body {
+/* body {
   background-image: url("/public/images/vhsstatic.gif");
   background-size: cover;
 
@@ -32,4 +32,4 @@ body {
 .container input,button,fieldset {
   border-radius: 10px;
   width: 60vh;
-}
+} */
