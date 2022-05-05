@@ -9,6 +9,8 @@ import {
 } from "../modules/FavoriteManager";
 import { ReviewList } from "../reviews/ReviewList";
 import "./MovieList.css";
+import { NavBar } from "../nav/NavBar";
+import "../nav/NavBar.css";
 
 export const MovieDetails = ({ getLoggedInUser , clearUser }) => {
   const [movie, setMovie] = useState({});
