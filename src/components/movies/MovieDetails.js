@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { getMovieById } from "../modules/MovieManager";
+import { NavBar } from "../nav/NavBar";
 import {
   addFavorite,
   getFavoritesByMovieId,

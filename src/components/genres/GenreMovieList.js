@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "../movies/MovieCard";
 import { getMoviesByGenreId } from "../modules/GenreManager";
+import { NavBar } from "../nav/NavBar";
 import "../movies/MovieList.css";
 import { NavBar } from "../nav/NavBar";
 import "../nav/NavBar.css";

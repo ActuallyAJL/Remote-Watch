@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ApplicationViews } from "./components/ApplicationViews";
-import { NavBar } from "./components/nav/NavBar";
 import "./RemoteWatch.css";
 
 export const RemoteWatch = () => {
