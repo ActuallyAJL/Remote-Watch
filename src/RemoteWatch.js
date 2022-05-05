@@ -25,9 +25,9 @@ export const RemoteWatch = () => {
 
   return (
     <>
-      <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated} />
       <ApplicationViews
         setAuthUser={setAuthUser}
+        clearUser={clearUser}
         isAuthenticated={isAuthenticated}
         setIsAuthenticated={setIsAuthenticated}
         getLoggedInUser={getLoggedInUser}
